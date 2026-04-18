@@ -20,6 +20,9 @@ app.get('/api/services', async (req, res) => {
   }
 });
 
+const path = require('path');
+
+// ... existing code ...
 // Create a booking
 app.post('/api/bookings', async (req, res) => {
   const { customerName, phoneNumber, bookingDate, bookingTime, serviceId } = req.body;
@@ -38,6 +41,14 @@ app.post('/api/bookings', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Failed to create booking' });
   }
+});
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, '../dist')));
+
+// Fallback route for React Router
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
