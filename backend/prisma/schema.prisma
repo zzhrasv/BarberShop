@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       Int
+  description String?
+  category    String   @default("Haircut") // Haircut, Colouring, Treatment, Shaving
+}
+
+model Booking {
+  id          Int      @id @default(autoincrement())
+  customerName String
+  phoneNumber  String
+  bookingDate  String   // format YYYY-MM-DD
+  bookingTime  String   // format HH:MM
+  serviceId    Int
+  createdAt    DateTime @default(now())
+}

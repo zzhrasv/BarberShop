@@ -1,0 +1,101 @@
+.membership-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.membership-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-accent);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.membership-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-yellow), #fff, var(--color-yellow));
+}
+
+.membership-header {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  border-bottom: 1px solid var(--border-light);
+  background: linear-gradient(to bottom, rgba(245, 185, 21, 0.05), transparent);
+}
+
+.membership-icon {
+  color: var(--color-yellow);
+  margin-bottom: 1rem;
+}
+
+.membership-header h2 {
+  font-size: 2rem;
+  color: var(--color-white);
+  margin-bottom: 1rem;
+}
+
+.membership-price {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.membership-price .currency {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.membership-price .amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-yellow);
+  line-height: 1;
+}
+
+.membership-price .period {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.membership-body {
+  padding: 2rem;
+}
+
+.benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-primary);
+}
+
+.benefit-icon {
+  color: var(--color-yellow);
+  flex-shrink: 0;
+}
+
+.membership-note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-align: center;
+}

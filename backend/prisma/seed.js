@@ -1,0 +1,27 @@
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
+
+async function main() {
+  await prisma.service.createMany({
+    data: [
+      { name: 'Reguler Haircut', price: 30000, category: 'Haircut', description: 'Haircut, Wash, Hairtonic, Styling tanpa produk' },
+      { name: 'Premium Haircut', price: 40000, category: 'Haircut', description: 'Haircut, Wash, Hairtonic, Head massage, Vitamin rambut, Styling produk' },
+      { name: 'Reborn Package', price: 55000, category: 'Package', description: 'Haircut, Wash, Hairtonic, Hot towel, Head massage, Vitamin, Styling produk' },
+      { name: 'Colouring Basic', price: 80000, category: 'Colouring', description: 'Basic Hair Colouring' },
+      { name: 'Colouring Fashion', price: 165000, category: 'Colouring', description: 'Fashion Hair Colouring (Start from)' },
+      { name: 'Creambath', price: 40000, category: 'Treatment', description: 'Creambath Treatment' },
+      { name: 'Shaving', price: 10000, category: 'Shaving', description: 'Beard / Mustache Shaving' },
+      { name: 'Perming', price: 100000, category: 'Treatment', description: 'Hair Perming (Est. Price)' } // Perming was mentioned in instructions but no price in image, setting a dummy price
+    ],
+  });
+  console.log('Seed data inserted');
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
