@@ -47,7 +47,7 @@ app.post('/api/bookings', async (req, res) => {
 app.use(express.static(path.join(__dirname, '../dist')));
 
 // Fallback route for React Router
-app.get('*', (req, res) => {
+app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
