@@ -1,0 +1,27 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Service {
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       Int
+  description String?
+  category    String   @default("Haircut")
+}
+
+model Booking {
+  id           Int      @id @default(autoincrement())
+  customerName String
+  phoneNumber  String
+  bookingDate  String
+  bookingTime  String
+  serviceId    Int
+  createdAt    DateTime @default(now())
+}
