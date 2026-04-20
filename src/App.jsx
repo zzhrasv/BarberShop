@@ -7,6 +7,8 @@ import Services from './pages/Services';
 import Catalog from './pages/Catalog';
 import Membership from './pages/Membership';
 import Booking from './pages/Booking';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="/catalog" element={<Catalog />} />
             <Route path="/membership" element={<Membership />} />
             <Route path="/booking" element={<Booking />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Routes>
         </main>
         <Footer />

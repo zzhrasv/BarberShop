@@ -99,3 +99,26 @@
   color: var(--text-secondary);
   text-align: center;
 }
+
+/* Mobile */
+@media (max-width: 480px) {
+  .membership-header {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .membership-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .membership-price .amount {
+    font-size: 2.5rem;
+  }
+
+  .membership-body {
+    padding: 1.5rem;
+  }
+
+  .membership-card {
+    border-radius: 8px;
+  }
+}

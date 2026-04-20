@@ -25,3 +25,25 @@ model Booking {
   serviceId    Int
   createdAt    DateTime @default(now())
 }
+
+model Member {
+  id          Int      @id @default(autoincrement())
+  name        String
+  phoneNumber String
+  email       String
+  packageType String
+  createdAt   DateTime @default(now())
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  title     String
+  imageUrl  String
+  createdAt DateTime @default(now())
+}

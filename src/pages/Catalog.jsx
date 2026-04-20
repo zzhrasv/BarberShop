@@ -1,13 +1,33 @@
 import React from 'react';
 import './Catalog.css';
+import buzzCut from '../assets/buzz-cut.png';
+import commaHair from '../assets/comma-hair.png';
+import crewcut from '../assets/crewcut.png';
+import dropFade from '../assets/drop-fade.png';
+import lowFade from '../assets/low-fade.png';
+import messyWaves from '../assets/messywaves.png';
+import midFade from '../assets/mid-fade.png';
+import modernMullet from '../assets/modern-mullet.png';
+import slickBack from '../assets/slickback.png';
+import taperFade from '../assets/taperfade.png';
+import twoBlock from '../assets/two-block.png';
+import underCut from '../assets/under-cut.png';
 
 const Catalog = () => {
-  // Generate 12 placeholders
-  const models = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    title: `Model Style ${i + 1}`,
-    image: `https://via.placeholder.com/400x500/1a1a1a/f5b915?text=Style+${i + 1}`
-  }));
+  const models = [
+    { id: 1,  title: 'Buzz Cut',       image: buzzCut },
+    { id: 2,  title: 'Comma Hair',     image: commaHair },
+    { id: 3,  title: 'Crew Cut',       image: crewcut },
+    { id: 4,  title: 'Drop Fade',      image: dropFade },
+    { id: 5,  title: 'Low Fade',       image: lowFade },
+    { id: 6,  title: 'Messy Waves',    image: messyWaves },
+    { id: 7,  title: 'Mid Fade',       image: midFade },
+    { id: 8,  title: 'Modern Mullet',  image: modernMullet },
+    { id: 9,  title: 'Slick Back',     image: slickBack },
+    { id: 10, title: 'Taper Fade',     image: taperFade },
+    { id: 11, title: 'Two Block',      image: twoBlock },
+    { id: 12, title: 'Under Cut',      image: underCut },
+  ];
 
   return (
     <div className="catalog-page section">

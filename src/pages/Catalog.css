@@ -48,6 +48,7 @@
   display: flex;
   align-items: flex-end;
   padding: 1.5rem;
+  /* Always visible on mobile (no hover on touch) */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -67,4 +68,35 @@
 
 .catalog-card:hover .catalog-title {
   transform: translateY(0);
+}
+
+/* Tablet: 2 kolom */
+@media (max-width: 768px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Mobile: title selalu tampil (touch device tidak ada hover) */
+@media (max-width: 480px) {
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .catalog-overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(15, 15, 15, 0.85) 0%, transparent 60%);
+  }
+
+  .catalog-title {
+    transform: translateY(0);
+    font-size: 1rem;
+  }
+
+  .catalog-card {
+    aspect-ratio: 3/4;
+    border-radius: 6px;
+  }
 }

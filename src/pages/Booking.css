@@ -34,8 +34,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
 }
 
+/* Tablet */
 @media (max-width: 768px) {
   .booking-form-container {
     padding: 2rem 1.5rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .booking-form-container {
+    padding: 1.5rem 1rem;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+  }
+
+  .form-control {
+    font-size: 16px; /* prevents iOS zoom on input focus */
   }
 }
