@@ -132,9 +132,25 @@
   }
 }
 
-/* Small mobile */
-@media (max-width: 380px) {
+/* Small mobile optimization */
+@media (max-width: 480px) {
   .navbar-logo {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    gap: 0.4rem;
+  }
+
+  .logo-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+
+  .navbar-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .navbar-logo span:last-child {
+    display: none; /* Hide "BARBERSHOP" text on extremely small screens if it doesn't fit */
   }
 }
