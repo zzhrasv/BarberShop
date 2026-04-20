@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Scissors, User } from 'lucide-react';
 import './Navbar.css';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
       <div className="container navbar-container">
         <Link to="/" className="navbar-logo">
           <div className="logo-wrapper">
-            <img src="/src/assets/logo.png" alt="EG'NIN Logo" className="navbar-logo-img" />
+            <img src={logo} alt="EG'NIN Logo" className="navbar-logo-img" />
           </div>
           <span>EG'NIN <span className="text-accent">BARBERSHOP</span></span>
         </Link>

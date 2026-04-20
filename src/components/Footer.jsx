@@ -1,5 +1,6 @@
 import { MapPin, Phone, Camera, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/logo.png';
 import './Footer.css';
 
 const Footer = () => {
@@ -9,7 +10,7 @@ const Footer = () => {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="footer-logo-container">
-              <img src="/src/assets/logo.png" alt="Logo" className="footer-logo-img" />
+              <img src={logo} alt="Logo" className="footer-logo-img" />
               <h3 className="footer-logo">EG'NIN <span className="text-accent">BARBERSHOP</span></h3>
             </div>
             <p className="footer-est">Premium Grooming Experience<br/>Sejak 2021</p>
