@@ -29,9 +29,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      // Use environment variable for API URL or default to localhost:5000
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-      const response = await axios.post(`${apiUrl}/api/admin/login`, {
+      const response = await axios.post('/api/admin/login', {
         email,
         password
       });
@@ -67,32 +65,32 @@ const AdminLogin = () => {
               <label className="form-label">
                 <Mail size={16} /> Email Admin
               </label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 className="form-control"
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                placeholder="admin@egnin.com" 
-                required 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="admin@egnin.com"
+                required
               />
             </div>
-            
+
             <div className="form-group">
               <label className="form-label">
                 <Lock size={16} /> Password
               </label>
               <div className="password-input-wrapper" style={{ position: 'relative' }}>
-                <input 
-                  type={showPassword ? "text" : "password"} 
+                <input
+                  type={showPassword ? "text" : "password"}
                   className="form-control"
                   style={{ paddingRight: '3rem' }}
-                  value={password} 
-                  onChange={(e) => setPassword(e.target.value)} 
-                  placeholder="Masukkan password" 
-                  required 
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Masukkan password"
+                  required
                 />
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={togglePasswordVisibility}
                   className="password-toggle-btn"
                   style={{
@@ -113,7 +111,7 @@ const AdminLogin = () => {
                 </button>
               </div>
             </div>
-            
+
             <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }} disabled={isSubmitting}>
               {isSubmitting ? (
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>

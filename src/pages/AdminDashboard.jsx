@@ -7,7 +7,7 @@ import './Admin.css';
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('bookings');
-  
+
   const [bookings, setBookings] = useState([]);
   const [memberships, setMemberships] = useState([]);
   const [gallery, setGallery] = useState([]);
@@ -31,9 +31,9 @@ const AdminDashboard = () => {
     setIsLoading(true);
     try {
       const [bookingsRes, membershipsRes, galleryRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/bookings'),
-        axios.get('http://localhost:5000/api/memberships'),
-        axios.get('http://localhost:5000/api/gallery')
+        axios.get('/api/bookings'),
+        axios.get('/api/memberships'),
+        axios.get('/api/gallery')
       ]);
       setBookings(bookingsRes.data);
       setMemberships(membershipsRes.data);
@@ -64,11 +64,11 @@ const AdminDashboard = () => {
     formData.append('title', imageTitle);
 
     try {
-      await axios.post('http://localhost:5000/api/gallery', formData, {
+      await axios.post('/api/gallery', formData, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       // Refresh gallery
-      const res = await axios.get('http://localhost:5000/api/gallery');
+      const res = await axios.get('/api/gallery');
       setGallery(res.data);
       setFile(null);
       setImageTitle('');
@@ -84,7 +84,7 @@ const AdminDashboard = () => {
   const handleDeleteImage = async (id) => {
     if (!window.confirm('Yakin ingin menghapus gambar ini?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/gallery/${id}`);
+      await axios.delete(`/api/gallery/${id}`);
       setGallery(gallery.filter(img => img.id !== id));
     } catch (error) {
       console.error('Delete failed:', error);
@@ -211,19 +211,19 @@ const AdminDashboard = () => {
                     <form className="upload-form" onSubmit={handleUpload}>
                       <div className="form-group">
                         <label className="form-label">Judul Gambar</label>
-                        <input 
-                          type="text" 
-                          className="form-control" 
-                          placeholder="Misal: Model Rambut Mullet" 
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Misal: Model Rambut Mullet"
                           value={imageTitle}
                           onChange={(e) => setImageTitle(e.target.value)}
                         />
                       </div>
                       <div className="form-group">
                         <label className="form-label">Pilih File</label>
-                        <input 
-                          type="file" 
-                          className="form-control" 
+                        <input
+                          type="file"
+                          className="form-control"
                           accept="image/*"
                           onChange={handleFileChange}
                         />
@@ -239,7 +239,7 @@ const AdminDashboard = () => {
                       gallery.map(img => (
                         <div key={img.id} className="gallery-card">
                           <div className="img-wrapper">
-                            <img src={`http://localhost:5000${img.imageUrl}`} alt={img.title} />
+                            <img src={`${img.imageUrl}`} alt={img.title} />
                           </div>
                           <div className="gallery-card-footer">
                             <span>{img.title}</span>

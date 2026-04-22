@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
@@ -8,19 +9,47 @@ datasource db {
 }
 
 model Service {
-  id          Int      @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   name        String
   price       Int
   description String?
-  category    String   @default("Haircut") // Haircut, Colouring, Treatment, Shaving
+  category    String  @default("Haircut")
 }
 
 model Booking {
-  id          Int      @id @default(autoincrement())
+  id           Int      @id @default(autoincrement())
   customerName String
   phoneNumber  String
-  bookingDate  String   // format YYYY-MM-DD
-  bookingTime  String   // format HH:MM
+  bookingDate  String
+  bookingTime  String
   serviceId    Int
   createdAt    DateTime @default(now())
+}
+
+model Member {
+  id          Int      @id @default(autoincrement())
+  name        String
+  phoneNumber String
+  email       String
+  packageType String
+  createdAt   DateTime @default(now())
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique
+  password String
+}
+
+model Gallery {
+  id        Int      @id @default(autoincrement())
+  title     String
+  imageUrl  String
+  createdAt DateTime @default(now())
+}
+
+model playing_with_neon {
+  id    Int    @id @default(autoincrement())
+  name  String
+  value Float? @db.Real
 }

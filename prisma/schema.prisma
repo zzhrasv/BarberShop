@@ -9,11 +9,11 @@ datasource db {
 }
 
 model Service {
-  id          Int      @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   name        String
   price       Int
   description String?
-  category    String   @default("Haircut")
+  category    String  @default("Haircut")
 }
 
 model Booking {
@@ -46,4 +46,10 @@ model Gallery {
   title     String
   imageUrl  String
   createdAt DateTime @default(now())
+}
+
+model playing_with_neon {
+  id    Int    @id @default(autoincrement())
+  name  String
+  value Float? @db.Real
 }

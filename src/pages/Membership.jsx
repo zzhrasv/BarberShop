@@ -32,7 +32,7 @@ const Membership = () => {
 
     try {
       // Create member via API
-      await axios.post('http://localhost:5000/api/memberships', formData);
+      await axios.post('/api/memberships', formData);
       setShowSuccess(true);
       setTimeout(() => setShowSuccess(false), 5000);
       setFormData({ ...formData, name: '', phoneNumber: '', email: '' });
