@@ -8,25 +8,25 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       // 1. Tambahkan logo.png di includeAssets agar di-cache oleh Service Worker
-      includeAssets: ['favicon.svg', 'icons.svg', 'logo.png'],
+      includeAssets: ['favicon.svg', 'icons.svg', 'logo_circle.png'],
       manifest: {
-        name: 'BarberShop Premium',
-        short_name: 'BarberShop',
-        description: 'Aplikasi Booking & Keanggotaan BarberShop Eksklusif',
+        name: "Eg'nin Barbershop",
+        short_name: "Eg'nin Barbershop",
+        description: 'Aplikasi Barbershop',
         theme_color: '#1a1a1a',
         background_color: '#1a1a1a',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',
-        // 2. Ubah src pada icons ke logo.png dengan type image/png
+        // 2. Ubah src pada icons ke logo-circle.png dengan type image/png
         icons: [
           {
-            src: 'logo.png',
+            src: 'logo_circle.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'logo.png',
+            src: 'logo_circle.png',
             sizes: '512x512',
             type: 'image/png'
           }
