@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LogOut, Users, Calendar, Image as ImageIcon, Trash2, Upload, Plus } from 'lucide-react';
+import { AuthContext } from '../context/AuthContext.jsx';
 import './Admin.css';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const { isAdminAuthenticated, logout } = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState('bookings');
 
   const [bookings, setBookings] = useState([]);
@@ -19,13 +21,12 @@ const AdminDashboard = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    // Check auth
-    if (localStorage.getItem('adminAuth') !== 'true') {
+    if (!isAdminAuthenticated) {
       navigate('/admin');
       return;
     }
     fetchData();
-  }, [navigate]);
+  }, [isAdminAuthenticated, navigate]);
 
   const fetchData = async () => {
     setIsLoading(true);
@@ -46,7 +47,7 @@ const AdminDashboard = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
+    logout();
     navigate('/admin');
   };
 
