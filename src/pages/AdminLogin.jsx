@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Loader2, Lock, Mail, Eye, EyeOff } from 'lucide-react';
+import { AuthContext } from '../context/AuthContext.jsx';
 import './Admin.css';
 
 const AdminLogin = () => {
@@ -11,13 +12,13 @@ const AdminLogin = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { isAdminAuthenticated, login } = useContext(AuthContext);
 
-  // Check if already logged in
-  React.useEffect(() => {
-    if (localStorage.getItem('adminAuth') === 'true') {
+  useEffect(() => {
+    if (isAdminAuthenticated) {
       navigate('/admin/dashboard');
     }
-  }, [navigate]);
+  }, [isAdminAuthenticated, navigate]);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -35,7 +36,7 @@ const AdminLogin = () => {
       });
 
       if (response.data.success) {
-        localStorage.setItem('adminAuth', 'true');
+        login();
         navigate('/admin/dashboard');
       }
     } catch (err) {
